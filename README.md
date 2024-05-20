@@ -77,7 +77,7 @@ vi pod.yml
 kind: Pod
 apiVersion: v1
 metadata:
-  name: custompod
+  name: pv-pod
   labels:
     app: nginx
 spec:
@@ -86,9 +86,9 @@ spec:
       image: nginx
       volumeMounts:
       - mountPath: "/var/www/html"
-        name: external
+        name: my-vol
   volumes:
-    - name: external
+    - name: my-vol
       persistentVolumeClaim:
         claimName: block-pvc
 ~~~
