@@ -1,7 +1,7 @@
 ## For EBS (persistent Volume) CSI Driver 
 ________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
-### Create IAM role for service Account with EBS policy
+### <span style="color:skyblue">Create IAM role for service Account with EBS policy</span>
 
 create role -->  web_identity --> select your cluster oidc --> select policy --> AmazonEBSCSIDriverPolicy --> give name for role -->  AmazonEBSCSIDriverRole
 
@@ -103,7 +103,7 @@ kubectl apply -f pod.yml
 ________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
 
-## For EFS (persistent Volume) CSI Driver
+### <span style="color:skyblue">For EFS (persistent Volume) CSI Driver</span>
 
 ### Create IAM role for service Account with EfS policy
 
