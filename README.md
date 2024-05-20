@@ -1,10 +1,10 @@
-## Create IAM role for service Account with EBS policy
+### Create IAM role for service Account with EBS policy
 
 create role -->  web_identity --> select your cluster oidc --> select policy --> AmazonEBSCSIDriverRole --> give name for role -->  AmazonEBSCSIDriverRole
 
 
 
-## create value file for EBS CSI servicve account 
+### create value file for EBS CSI servicve account 
 ~~~
 vi ebs.yml
 ~~~
@@ -18,17 +18,17 @@ controller:
       eks.amazonaws.com/role-arn: <Enter_your_EBS_CSI_IAM_Role_ARN_here>
 ~~~
 
-## Add EBS CSI driver chart to helm repo
+### Add EBS CSI driver chart to helm repo
 ~~~
 helm repo add aws-ebs-csi-driver https://kubernetes-sigs.github.io/aws-ebs-csi-driver
 ~~~
 
-## Install EBS CSI Driver  
+### Install EBS CSI Driver  
 ~~~
 helm install aws-ebs-csi-driver aws-ebs-csi-driver/aws-ebs-csi-driver -n kube-system --values=ebs-csi.yml
 ~~~
 
-## Create storage class
+### Create storage class
 ~~~
 vi sc.yml
 ~~~
@@ -48,7 +48,7 @@ parameters:
 kubectl apply -f sc.yml
 ~~~
 
-## Create PVC 
+### Create PVC 
 ~~~
 vi pvc.yml
 ~~~
@@ -69,7 +69,7 @@ spec:
 ~~~
 kubectl apply -f pvc.yml
 ~~~
-## Create pod with Persistent Volume
+### Create pod with Persistent Volume
 ~~~
 vi pod.yml
 ~~~
