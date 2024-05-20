@@ -1,4 +1,4 @@
-## For EBS (persistent Volume) CSI Deriver
+## For EBS (persistent Volume) CSI Driver
 
 ### Create IAM role for service Account with EBS policy
 
@@ -101,7 +101,7 @@ kubectl apply -f pod.yml
 ________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
 
-## For EFS (persistent Volume) CSI Deriver
+## For EFS (persistent Volume) CSI Driver
 
 ### Create IAM role for service Account with EfS policy
 
