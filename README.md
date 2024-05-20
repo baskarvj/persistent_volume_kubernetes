@@ -15,7 +15,7 @@ controller:
     name: ebs-csi-controller
     nameTest:
     annotations:
-      eks.amazonaws.com/role-arn: <Enter your ARN of the EBS CSI IAM Role that created the above step>
+      eks.amazonaws.com/role-arn: <Enter_your_EBS_CSI_IAM_Role_ARN_here>
 ~~~
 
 ## Add EBS CSI driver chart to helm repo
