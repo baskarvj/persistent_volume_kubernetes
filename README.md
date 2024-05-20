@@ -1,6 +1,6 @@
 ## Create IAM role for service Account with EBS policy
 
-create role -->  web_identity --> select your cluster oidc --> select policy --> AmazonEBSCSIDriverRole --> give anme for role -->  AmazonEBSCSIDriverRole
+create role -->  web_identity --> select your cluster oidc --> select policy --> AmazonEBSCSIDriverRole --> give name for role -->  AmazonEBSCSIDriverRole
 
 
 
@@ -17,7 +17,6 @@ controller:
     annotations:
       eks.amazonaws.com/role-arn: <Enter your ARN of the EBS CSI IAM Role that created the above step>
 ~~~
-
 
 ## Add EBS CSI driver chart to helm repo
 ~~~
@@ -45,7 +44,9 @@ parameters:
   type: gp2
   fsType: xfs
 ~~~
-
+~~~
+kubectl apply -f sc.yml
+~~~
 
 ## Create PVC 
 ~~~
@@ -65,7 +66,9 @@ spec:
     requests:
       storage: 5Gi
 ~~~
-
+~~~
+kubectl apply -f pvc.yml
+~~~
 ## Create pod with Persistent Volume
 ~~~
 vi pod.yml
@@ -88,4 +91,7 @@ spec:
     - name: external
       persistentVolumeClaim:
         claimName: block-pvc
+~~~
+~~~
+kubectl apply -f pod.yml
 ~~~
