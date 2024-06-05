@@ -5,6 +5,9 @@ ________________________________________________________________________________
 
 create role -->  web_identity --> select your cluster oidc --> select policy --> AmazonEBSCSIDriverPolicy --> give name for role -->  AmazonEBSCSIDriverRole
 
+### Now the role will allow the oidc(communication bw aws-eks) to access aws resource, because eks own the oidc
+![image](https://github.com/baskarvj/persistent_volume_kubernetes/assets/103120325/743668f0-ce7e-4bcd-a79d-f68198377029)
+
 ### create value file for EBS CSI servicve account 
 `
 ~~~
@@ -29,10 +32,6 @@ helm repo add aws-ebs-csi-driver https://kubernetes-sigs.github.io/aws-ebs-csi-d
 ~~~
 helm install aws-ebs-csi-driver aws-ebs-csi-driver/aws-ebs-csi-driver -n kube-system --values=ebs.yml
 ~~~
-
-### Now new service account will be created and the role will allow the oidc(communication bw aws-eks) to access aws resource, because eks own the oidc
-![image](https://github.com/baskarvj/persistent_volume_kubernetes/assets/103120325/743668f0-ce7e-4bcd-a79d-f68198377029)
-
 
 ### Create storage class
 ~~~
