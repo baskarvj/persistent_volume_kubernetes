@@ -114,7 +114,7 @@ create role -->  web_identity --> select your cluster oidc --> select policy -->
 
 ### create value file for EFS CSI servicve account 
 ~~~
-vi ebs.yml
+vi efs.yml
 ~~~
 ~~~
 controller:
