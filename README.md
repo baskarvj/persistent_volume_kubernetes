@@ -29,7 +29,7 @@ helm repo add aws-ebs-csi-driver https://kubernetes-sigs.github.io/aws-ebs-csi-d
 
 ### Install EBS CSI Driver  
 ~~~
-helm install aws-ebs-csi-driver aws-ebs-csi-driver/aws-ebs-csi-driver -n kube-system --values=ebs-csi.yml
+helm install aws-ebs-csi-driver aws-ebs-csi-driver/aws-ebs-csi-driver -n kube-system --values=ebs.yml
 ~~~
 
 ### Create storage class
