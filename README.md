@@ -106,10 +106,6 @@ ________________________________________________________________________________
 
 ### <span style="color:skyblue">For EFS (persistent Volume) CSI Driver</span>
 
-For this we need to create EFS manually, and we can mention the filesystem id , because we can create multiple access points(directories) in the same efs, so we can keep single efs for all pods
-
-ref link: https://aws.amazon.com/blogs/containers/introducing-efs-csi-dynamic-provisioning/ 
-
 ### Create IAM role for service Account with EfS policy
 
 create role -->  web_identity --> select your cluster oidc --> select policy --> AmazonEFSCSIDriverPolicy --> give name for role -->  AmazonEFSCSIDriverRole
@@ -140,6 +136,10 @@ helm repo add aws-efs-csi-driver https://kubernetes-sigs.github.io/aws-efs-csi-d
 helm install aws-efs-csi-driver aws-efs-csi-driver/aws-efs-csi-driver -n kube-system --values=efs.yml
 
 ~~~
+
+For this we need to create EFS manually, and we can mention the filesystem id , because we can create multiple access points(directories) in the same efs, so we can keep single efs for all pods
+
+ref link: https://aws.amazon.com/blogs/containers/introducing-efs-csi-dynamic-provisioning/ 
 
 ### Create storage class
 ~~~
