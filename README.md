@@ -89,9 +89,9 @@ spec:
   containers:
     - name: nginx
       image: nginx
-      volumeMounts:
-      - mountPath: "/var/www/html"
-        name: my-vol
+      volumeDevices:
+        - devicePath: /dev/xvda
+          name: my-vol
   volumes:
     - name: my-vol
       persistentVolumeClaim:
