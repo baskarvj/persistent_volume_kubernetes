@@ -146,16 +146,15 @@ helm install aws-efs-csi-driver aws-efs-csi-driver/aws-efs-csi-driver -n kube-sy
 vi sc.yml
 ~~~
 ~~~
-apiVersion: storage.k8s.io/v1
 kind: StorageClass
+apiVersion: storage.k8s.io/v1
 metadata:
-  name: ebs-sc
-provisioner: kubernetes.io/aws-ebs
-volumeBindingMode: WaitForFirstConsumer
-allowVolumeExpansion: false
+  name: efs-sc
+provisioner: efs.csi.aws.com
 parameters:
-  type: gp2
-  fsType: xfs
+  provisioningMode: efs-ap
+  fileSystemId: <enter_your_filesystem_id_here>
+  directoryPerms: "700"
 ~~~
 ~~~
 kubectl apply -f sc.yml
@@ -169,15 +168,14 @@ vi pvc.yml
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: block-pvc
+  name: efs-claim
 spec:
   accessModes:
-    - ReadWriteOnce
-  storageClassName: ebs-sc
-  volumeMode: Block
+    - ReadWriteMany
+  storageClassName: efs-sc
   resources:
     requests:
-      storage: 5Gi
+      storage: 20Gi
 ~~~
 ~~~
 kubectl apply -f pvc.yml
@@ -198,12 +196,13 @@ spec:
     - name: nginx
       image: nginx
       volumeMounts:
-      - mountPath: "/var/www/html"
-        name: my-vol
+        - name: my-vol
+          mountPath: /example
+
   volumes:
     - name: my-vol
       persistentVolumeClaim:
-        claimName: block-pvc
+        claimName: efs-claim
 ~~~
 ~~~
 kubectl apply -f pod.yml
